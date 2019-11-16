@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Home from './screens/Home';
+import React from 'react';
+// import Home from './screens/Home';
 import Chances from './screens/Chances';
 
 const App = (props) => {
