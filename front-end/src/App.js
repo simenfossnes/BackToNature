@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import Button from 'antd/es/button';
-import './App.css';
+import Home from './screens/Home';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Button type="primary">Button</Button>
-      </div>
-    );
-  }
+const App = (props) => {
+  return (
+    <Home/>
+  );
 }
 
 export default App;
