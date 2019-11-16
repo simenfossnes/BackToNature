@@ -4,6 +4,8 @@ node_js:
 cache:
   directories:
   - front-end/node_modules
+before_install:
+  - cd front-end
 script:
   - cd front-end
   - npm run test
