@@ -25,3 +25,4 @@ front-end/yarn-error.log*
 # custom
 front-end/yarn.lock
 front-end/package-lock.json
+front-end/.env
