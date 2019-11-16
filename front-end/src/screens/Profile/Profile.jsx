@@ -1,15 +1,16 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import style from './Profile.module.css';
-import { Typography  } from 'antd';
+import { Typography, Button, Avatar  } from 'antd';
 
 // extracting title component
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const Profile = (props) => (
   <div className={style.wrapper}>
-    <Title level={4}>The Nice Woman</Title>
-    <p>"This woman was so nice. Ohh, joj."</p>
+    <Avatar style={{marginBottom: '20px'}} size={128} icon="user" />
+    <Title level={4} style={{marginBottom: '12px'}}>The Nice Woman</Title>
+    <Text><Button>Sign Up</Button> to save preferences.</Text>
   </div>
 );
 

@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./MainSection.module.css";
-import { Link } from "react-router-dom";
-import { Menu, Icon, Tabs } from "antd";
+import { Icon, Tabs } from "antd";
 import Profile from '../../screens/Profile';
 import Chances from '../../screens/Chances';
 import Feed from '../../screens/Feed';
