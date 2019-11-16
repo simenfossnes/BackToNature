@@ -10,12 +10,10 @@ script:
   - npm run test
   - npm run build
 
-before-deploy:
-  - cd front-end
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $github
-  local_dir: build
+  local_dir: front-end/build
   on:
     branch: master
