@@ -26,7 +26,7 @@ const App = props => {
   const onBoarded = true;
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL>
       <div>
         <Menu />
         <Switch>
