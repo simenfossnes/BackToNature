@@ -1,0 +1,29 @@
+{
+    "id": "46Juzcyx",
+    "title": "Pick <rare flower>",
+    "description": "Get a once-in-a-season chance at picking <rare flower>.",
+    "background-image": "https://images.unsplash.com/photo-1488415032361-b7e238421f1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2249&q=80",
+    "requirements": [
+        {
+            "type": "season",
+            "season": "spring",
+            "specific": {
+                "start": "2019-04-12",
+                "end": "2019-04-12"
+            }
+        },
+        {
+            "type": "weather conditions",
+            "main": "clear",
+            "minTemp": 0,
+            "maxTemp": 24,
+            "wind": {
+                "speed": 0.47,
+                "deg": 107.538
+            },
+            "clouds": {
+                "all": 2
+            }
+        }
+    ]
+}

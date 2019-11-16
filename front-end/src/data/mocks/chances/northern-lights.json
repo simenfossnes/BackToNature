@@ -1,0 +1,43 @@
+{
+    "chances": [
+        {
+            "id": "2WEKaVNO",
+            "title": "Northern Lights",
+            "description": "Watch the mezmerizing aurora borialis",
+            "background-image": "https://images.unsplash.com/photo-1488415032361-b7e238421f1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2249&q=80",
+            "requirements": [
+                {
+                    "type": "season",
+                    "season": "winter"
+                },
+                {
+                    "type": "weather conditions",
+                    "main": "clear",
+                    "clouds": {
+                        "min": 0,
+                        "max": 0.25
+                    }
+                },
+                {
+                    "type": "people",
+                    "amount": {
+                        "min": 0,
+                        "max": 12
+                    }
+                }
+            ],
+            "locations": [
+                {
+                    "lat": 65.345345,
+                    "lng": 34.375934,
+                    "radius": 12
+                },
+                {
+                    "lat": 64.345345,
+                    "lng": 32.375934,
+                    "radius": 4
+                }
+            ]
+        }
+    ]
+}
