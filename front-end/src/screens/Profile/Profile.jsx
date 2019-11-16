@@ -9,7 +9,7 @@ const { Title, Text } = Typography;
 const Profile = (props) => (
   <div className={style.wrapper}>
     <Avatar style={{marginBottom: '20px'}} size={128} icon="user" />
-    <Title level={4} style={{marginBottom: '12px'}}>The Nice Woman</Title>
+    <Title level={4} style={{marginBottom: '12px'}}>Anonymous Hiker</Title>
     <Text><Button>Sign Up</Button> to save preferences.</Text>
   </div>
 );
