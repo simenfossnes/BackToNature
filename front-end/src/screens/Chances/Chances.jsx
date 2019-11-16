@@ -135,8 +135,8 @@ Chances.propTypes = {
 };
 
 Chances.defaultProps = {
-  center: [60.310720, 24.484246],
-  zoom: 12.3,
+  center: [60.335448, 24.497748],
+  zoom: 14.5,
 };
 
 export default Chances;
