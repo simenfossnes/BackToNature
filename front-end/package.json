@@ -2,6 +2,7 @@
   "name": "back-to-nature",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://simenfossnes.github.io/BackToNature",
   "dependencies": {
     "antd": "^3.25.1",
     "google-map-react": "^1.1.5",
