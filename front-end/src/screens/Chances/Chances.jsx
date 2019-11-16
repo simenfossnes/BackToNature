@@ -9,8 +9,91 @@ class Chances extends Component {
     super(props);
 
     this.state = {
-      places: [],
-    };
+      places: [{
+        id: 0, 
+        name: "Point",
+        lat: 60.33073081360451,
+        lng:24.492838046488888
+      },
+      {
+        id: 1, 
+        name: "Point",
+        lat: 60.341269,
+        lng: 24.497746
+      },
+      {
+        id: 2, 
+        name: "Point",
+        lat: 60.340301,
+        lng: 24.497327
+      },
+      {
+        id: 3, 
+        name: "Point",
+        lat: 60.339412,
+        lng: 24.497680
+      },
+      {
+        id: 4, 
+        name: "Point",
+        lat: 60.338491,
+        lng: 24.498418
+      },
+      {
+        id: 5, 
+        name: "Point",
+        lat: 60.337713,
+        lng: 24.499604
+      },
+      {
+        id: 6, 
+        name: "Point",
+        lat: 60.336665,
+        lng: 24.499893
+      },
+      {
+        id: 7, 
+        name: "Point",
+        lat: 60.336047,
+        lng: 24.498821
+      },
+      {
+        id: 8, 
+        name: "Point",
+        lat: 60.335138,
+        lng: 24.498267
+      },
+      {
+        id: 9, 
+        name: "Point",
+        lat: 60.334293,
+        lng: 24.499026
+      },
+      {
+        id: 10, 
+        name: "Point",
+        lat: 60.333674,
+        lng: 24.497712
+      },
+      {
+        id: 11, 
+        name: "Point",
+        lat: 60.333117,
+        lng: 24.496265
+      },
+      {
+        id: 12, 
+        name: "Point",
+        lat: 60.332290,
+        lng: 24.494818
+      },
+      {
+        id: 13, 
+        name: "Point",
+        lat: 60.331851,
+        lng: 24.493235
+      }]
+    }
   }
 
   componentDidMount() {
@@ -22,6 +105,7 @@ class Chances extends Component {
   render() {
     const { places } = this.state;
     console.log(this.props);
+    console.log(places);
     return (
       <div className={styles.wrapper}>
         <GoogleMap
@@ -35,8 +119,8 @@ class Chances extends Component {
             <Marker
               key={place.id}
               text={place.name}
-              lat={place.geometry.location.lat}
-              lng={place.geometry.location.lng}
+              lat={place.lat}
+              lng={place.lng}
             />
           ))}
         </GoogleMap>
