@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styles from './Chances.module.css';
 import isEmpty from 'lodash.isempty';
 
@@ -7,9 +8,6 @@ import Marker from '../../components/Marker';
 
 // examples:
 import GoogleMap from '../../components/GoogleMap';
-
-// consts
-const LOS_ANGELES_CENTER = [34.0522, -118.2437];
 
 // Return map bounds based on list of places
 const getMapBounds = (map, maps, places) => {
@@ -60,13 +58,15 @@ class Chances extends Component {
 
   render() {
     const { places } = this.state;
+    console.log(this.props);
     return (
       <div className={styles.wrapper}>
         <GoogleMap
-          defaultZoom={10}
-          defaultCenter={LOS_ANGELES_CENTER}
-          yesIWantToUseGoogleMapApiInternals
-          onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, places)}
+          bootstrapURLKeys={{
+            key: 'AIzaSyDW3sblDQVKWqO9j1gRR7yPEztqOt355W4'
+          }}
+          defaultZoom={this.props.zoom}
+          defaultCenter={this.props.center}
         >
           {places.map(place => (
             <Marker
@@ -83,11 +83,13 @@ class Chances extends Component {
 }
 
 Chances.propTypes = {
-  // bla: PropTypes.string,
+  center: PropTypes.array,
+  zoom: PropTypes.number,
 };
 
 Chances.defaultProps = {
-  // bla: 'test',
+  center: [60.310720, 24.484246],
+  zoom: 12.3,
 };
 
 export default Chances;
