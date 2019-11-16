@@ -3,10 +3,10 @@ node_js:
   - "stable"
 cache:
   directories:
-  - node_modules
+  - front-end/node_modules
 script:
   - cd front-end
-  - npm test
+  - npm run test
   - npm run build
 
 deploy:
