@@ -5,6 +5,7 @@ import React from 'react';
 const Feed = (props) => (
   <div className="FeedWrapper">
     Test content
+    <h1>ho hey something</h1>
   </div>
 );
 
