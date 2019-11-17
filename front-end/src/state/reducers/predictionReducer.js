@@ -6,13 +6,20 @@ export default function predictionReducer(state = initialState.prediction, actio
         case types.FETCH_PEOPLE_TRAFFIC_PREDICTIONS_START:
             return {
                 ...state,
-                fetching: true
+                peopleTraffic: {
+                    ...state.peopleTraffic,
+                    fetching: true
+                }
             };
 
         case types.FETCH_PEOPLE_TRAFFIC_PREDICTIONS_SUCCESS:
             return {
                 ...state,
-                fetching: false
+                peopleTraffic: {
+                    ...state.peopleTraffic,
+                    data: action.data,
+                    fetching: false
+                }
             };
 
         case types.FETCH_PEOPLE_TRAFFIC_PREDICTIONS_ERROR:

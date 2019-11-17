@@ -4,8 +4,9 @@ export const fetchPeopleTrafficPredictionsStart = () => ({
     type: types.FETCH_PEOPLE_TRAFFIC_PREDICTIONS_START
 });
 
-export const fetchPeopleTrafficPredictionsSuccess = () => ({
-    type: types.FETCH_PEOPLE_TRAFFIC_PREDICTIONS_SUCCESS
+export const fetchPeopleTrafficPredictionsSuccess = (data) => ({
+    type: types.FETCH_PEOPLE_TRAFFIC_PREDICTIONS_SUCCESS,
+    data
 });
 
 export const fetchPeopleTrafficPredictionsError = () => ({

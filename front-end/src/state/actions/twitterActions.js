@@ -4,8 +4,9 @@ export const fetchTweetsStart = () => ({
     type: types.FETCH_TWEETS_START
 });
 
-export const fetchTweetsSuccess = () => ({
-    type: types.FETCH_TWEETS_SUCCESS
+export const fetchTweetsSuccess = (data) => ({
+    type: types.FETCH_TWEETS_SUCCESS,
+    data
 });
 
 export const fetchTweetsError = () => ({
