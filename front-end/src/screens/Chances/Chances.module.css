@@ -1,7 +1,14 @@
 /* your css code */
 .wrapper {
     width: calc(100vw - 1px);
-    height:  100vh;
+    height: 100vh;
+}
+
+.sliderWrapper {
+    position: absolute;
+    bottom: 45px;
+    width: 100vw;
+    padding: 8px 24px;
 }
 
 .legenda {

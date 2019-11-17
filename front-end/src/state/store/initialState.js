@@ -10,5 +10,8 @@ export default {
             data: null,
             fetching: false
         }
+    },
+    timePeriod: {
+        daysAhead: 0
     }
 };

@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import styles from './Chances.module.css';
 import Marker from '../../components/Marker';
 import GoogleMap from '../../components/GoogleMap';
-import { Slider } from 'antd';
-
+import { Slider, Typography } from 'antd';
 import * as places_data from '../../data/places.js';
 import legend from '../../images/legend-07.png';
+
+const { Text } = Typography;
 
 class Chances extends Component {
   constructor(props) {
@@ -33,9 +34,6 @@ class Chances extends Component {
     };    
     return (
       <div className={styles.wrapper}>
-        <div style={{width: "85%", paddingLeft: "9%"}}>
-          <Slider marks={marks} included={false} defaultValue={0} step={50} tipFormatter={null} />
-        </div>
         <GoogleMap
           bootstrapURLKeys={{
             key: 'AIzaSyDW3sblDQVKWqO9j1gRR7yPEztqOt355W4'
@@ -53,7 +51,10 @@ class Chances extends Component {
             />
           ))}
         </GoogleMap>
-        <div className={styles.legenda} ><img style={{width: "90px"}} src={legend}/></div>
+        <div className={styles.sliderWrapper}>
+          <Text>Predicting {5} days ahead</Text>
+          <Slider handleStyle={{width: '24px', height: '24px', marginTop: '-12px'}} min={0} max={5} defaultValue={0} step={1} />
+        </div>
       </div>
     );
   }
