@@ -13,7 +13,6 @@ import { predictionSaga } from '../../state/sagas/sagas';
 class Chances extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       places: places_data.data,
       colors: ["#1c3010", "#34591e", "#4f842d", "#62b239"]

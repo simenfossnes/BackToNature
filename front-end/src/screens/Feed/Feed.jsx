@@ -1,33 +1,38 @@
 import React from "react";
+import { connect } from "react-redux";
 // import PropTypes from 'prop-types';
 //import { Test } from './Feed.styles';
-import { getPeopleTrafficPredictions } from '../../apis/OurOwn/requests';
-import { getTweets } from '../../apis/Twitter/requests';
+import { store } from "../../App";
+import { fetchTweetsStart } from "../../state/actions/twitterActions";
+import isEmpty from "lodash.isempty";
 
 class Feed extends React.Component {
-  state = {
-    loaded: false,
-    content: []
-  };
 
-  async componentDidMount() {
-    console.log('anything happened?');
-    // call the api
-    const data = await getTweets();
-    const data2 = await getPeopleTrafficPredictions();
-    console.log(data);
-    console.log(data2);
-    // getPeopleTrafficPredictions(this.peopleTrafficCallback);
+  componentDidMount() {
+    store.dispatch(fetchTweetsStart());
   }
 
   render() {
+    const { loading, tweets } = this.props;
     return (
       <div className="FeedWrapper">
         <h1>Feed</h1>
+        {loading && "loading..."}
+        {!(isEmpty(tweets) && !loading) && (
+          <TweetList tweets={tweets.statuses} />
+        )}
       </div>
     );
   }
 }
+
+const TweetList = ({ tweets }) => (
+  <div>
+    {tweets.map(t => (
+      <p>{t.text}</p>
+    ))}
+  </div>
+);
 
 Feed.propTypes = {
   // bla: PropTypes.string,
@@ -37,4 +42,12 @@ Feed.defaultProps = {
   // bla: 'test',
 };
 
-export default Feed;
+const mapStateToProps = (state) => {
+  return {
+    loading: state.twitter.tweets.loading,
+    tweets: state.twitter.tweets.data
+  };
+};
+const mapDispatchToProps = undefined;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Feed);
