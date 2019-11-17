@@ -5,12 +5,10 @@ import PropTypes from 'prop-types';
 import styles from './Chances.module.css';
 import Marker from '../../components/Marker';
 import GoogleMap from '../../components/GoogleMap';
-import { Slider, Typography } from 'antd';
+import { Slider } from 'antd';
 import * as places_data from '../../data/places.js';
 import Legend from '../../images/Legend.jsx';
 import { updateDaysAhead } from '../../state/actions/timePeriodActions';
-
-const { Text } = Typography;
 
 class Chances extends Component {
   constructor(props) {
@@ -24,6 +22,8 @@ class Chances extends Component {
   render() {
     const { places, colors } = this.state;
     const { daysAhead, updateDaysAhead } = this.props; 
+
+    const data = this.props.data ? this.props.data[daysAhead] : null;
 
     return (
       <div className={styles.wrapper}>
@@ -41,7 +41,7 @@ class Chances extends Component {
               text={place.name}
               lat={place.lat}
               lng={place.lng}
-              color={this.props.data != null ? colors[this.props.data[place.track_id]] : colors[0]}
+              color={data != null ? colors[data[place.track_id]] : colors[0]}
             />
           ))}
         </GoogleMap>
