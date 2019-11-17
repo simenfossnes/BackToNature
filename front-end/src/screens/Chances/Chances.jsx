@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './Chances.module.css';
 import Marker from '../../components/Marker';
 import GoogleMap from '../../components/GoogleMap';
 import { Slider, Typography } from 'antd';
 import * as places_data from '../../data/places.js';
-import legend from '../../images/legend-07.png';
+import Legend from '../../images/Legend.jsx';
+import { updateDaysAhead } from '../../state/actions/timePeriodActions';
 
 const { Text } = Typography;
 
@@ -18,22 +21,18 @@ class Chances extends Component {
     }
   }
 
-  componentDidMount() {
-    fetch('places.json')
-      .then(response => response.json())
-      .then(data => this.setState({ places: data.results }));
-  }
-
   render() {
     const { places, colors } = this.state;
-    const density = [colors[0], colors[1], colors[2], colors[3], colors[0]];
+    const { daysAhead, updateDaysAhead } = this.props;
     const marks = {
       0: 'Today',
       50: 'Tomorrow',
       100: '19.11.2019',
-    };    
+    };   
+
     return (
       <div className={styles.wrapper}>
+        <div className={styles.legend} ><Legend /></div>
         <GoogleMap
           bootstrapURLKeys={{
             key: 'AIzaSyDW3sblDQVKWqO9j1gRR7yPEztqOt355W4'
@@ -47,13 +46,13 @@ class Chances extends Component {
               text={place.name}
               lat={place.lat}
               lng={place.lng}
-              color={density[place.track_id]}
+              color={this.props.data != null ? colors[this.props.data[place.track_id]] : colors[0]}
             />
           ))}
         </GoogleMap>
         <div className={styles.sliderWrapper}>
-          <Text>Predicting {5} days ahead</Text>
-          <Slider handleStyle={{width: '24px', height: '24px', marginTop: '-12px'}} min={0} max={5} defaultValue={0} step={1} />
+          <Text>Predicting {daysAhead} days ahead</Text>
+          <Slider onChange={updateDaysAhead} handleStyle={{width: '24px', height: '24px', marginTop: '-12px'}} min={0} max={5} defaultValue={0} step={1} />
         </div>
       </div>
     );
@@ -70,4 +69,15 @@ Chances.defaultProps = {
   zoom: 13,
 };
 
-export default Chances;
+const mapStateToProps = (state) => ({
+  data: state.predictions.peopleTraffic.data,
+  daysAhead: state.timePeriod.daysAhead
+})
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    updateDaysAhead
+  }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chances);

@@ -11,9 +11,10 @@
     padding: 8px 24px;
 }
 
-.legenda {
+.legend {
     position: fixed;
-    bottom: 50px;
-    left: 6px;
+    top: 20px;
+    right: 20px;
     width: 90px;
+    z-index: 10;
 }
