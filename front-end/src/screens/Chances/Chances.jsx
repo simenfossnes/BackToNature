@@ -9,6 +9,7 @@ import { Slider } from 'antd';
 import * as places_data from '../../data/places.js';
 import Legend from '../../images/Legend.jsx';
 import { updateDaysAhead } from '../../state/actions/timePeriodActions';
+import Loader from '../../components/Loader';
 
 class Chances extends Component {
   constructor(props) {
@@ -21,12 +22,15 @@ class Chances extends Component {
 
   render() {
     const { places, colors } = this.state;
-    const { daysAhead, updateDaysAhead } = this.props; 
+    const { loading, daysAhead, updateDaysAhead } = this.props; 
 
     const data = this.props.data ? this.props.data[daysAhead] : null;
 
+    console.log('loading: ', this.props.loading);
+
     return (
       <div className={styles.wrapper}>
+        { loading && <Loader/> }
         <div className={styles.legend} ><Legend width={64}/></div>
         <GoogleMap
           bootstrapURLKeys={{
@@ -65,7 +69,8 @@ Chances.defaultProps = {
 
 const mapStateToProps = (state) => ({
   data: state.predictions.peopleTraffic.data,
-  daysAhead: state.timePeriod.daysAhead
+  daysAhead: state.timePeriod.daysAhead,
+  loading: state.predictions.peopleTraffic.fetching
 })
 
 const mapDispatchToProps = dispatch => (

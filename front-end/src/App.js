@@ -19,7 +19,7 @@ const App = props => {
       <Router basename={process.env.PUBLIC_URL}>
         <React.Fragment>
           <Route exact path="/">
-            {onBoarded && <Onboarding />}
+            {!onBoarded && <Onboarding />}
           </Route>
           <MainSection />
         </React.Fragment>
