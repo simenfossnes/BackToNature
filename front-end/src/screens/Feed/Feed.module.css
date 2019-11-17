@@ -1,6 +1,8 @@
 /* your css code */
 .wrapper {
     padding: 24px;
+    height: 100vh;
+    overflow: scroll;
 }
 
 .image {
