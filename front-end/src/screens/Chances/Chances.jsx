@@ -45,7 +45,7 @@ class Chances extends Component {
               text={place.name}
               lat={place.lat}
               lng={place.lng}
-              color={this.props.data != null ? colors[this.props.data[0]] : colors[0]}
+              color={this.props.data != null ? colors[this.props.data[place.track_id]] : colors[0]}
             />
           ))}
         </GoogleMap>

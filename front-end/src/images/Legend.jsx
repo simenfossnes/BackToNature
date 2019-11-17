@@ -1,7 +1,7 @@
 import React from "react";
 
 const Legend = props => (
-  <svg data-name="Capa 1" viewBox="0 0 512 512" {...props}>
+  <svg data-name="Capa 1" viewBox="148 70 230 400" {...props}>
     <path fill="#fff" d="M150.91 72.66H371.01V461.58000000000004H150.91z" />
     <path
       transform="rotate(90 209.215 400.855)"
@@ -27,7 +27,7 @@ const Legend = props => (
       transform="translate(275.04 145.08)"
       fontSize="41px"
       fill="#231f20"
-      fontFamily="MyriadPro-Regular,Myriad Pro"
+      fontFamily="Helvetica"
       letterSpacing=".033989138719512195em"
     >
       {"f"}
@@ -42,7 +42,7 @@ const Legend = props => (
       transform="translate(265.04 409.51)"
       fontSize="41px"
       fill="#231f20"
-      fontFamily="MyriadPro-Regular,Myriad Pro"
+      fontFamily="Helvetica"
       letterSpacing="-.017983041158536585em"
     >
       {"busy"}
