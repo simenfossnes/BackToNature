@@ -23,8 +23,6 @@ class Chances extends Component {
 
   render() {
     const { places } = this.state;
-    console.log(this.props);
-    console.log(places);
     return (
       <div className={styles.wrapper}>
         <GoogleMap

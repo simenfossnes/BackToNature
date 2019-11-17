@@ -1,0 +1,8 @@
+{
+    "name": "twitter-proxy",
+    "version": "0.0.1",
+    "dependencies": {
+        "twit": "2.2.11"
+    }
+  }
+  
