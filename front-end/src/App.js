@@ -4,8 +4,13 @@ import configureStore from "./state/store/configureStore";
 import { Provider } from "react-redux";
 import MainSection from "./components/MainSection";
 import Onboarding from "./components/Onboarding/Onboarding";
+import { fetchPeopleTrafficPredictionsStart } from './state/actions/predictionActions';
+import { fetchTweetsStart } from './state/actions/twitterActions';
 
 const store = configureStore();
+
+store.dispatch(fetchPeopleTrafficPredictionsStart());
+store.dispatch(fetchTweetsStart());
 
 const App = props => {
   const onBoarded = true;
