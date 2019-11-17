@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import styles from './Chances.module.css';
 import Marker from '../../components/Marker';
 import GoogleMap from '../../components/GoogleMap';
+import { Slider, Switch } from 'antd';
 
 import * as places_data from '../../data/places.js';
+import legend from '../../images/legend-07.png';
 
 class Chances extends Component {
   constructor(props) {
@@ -24,11 +26,17 @@ class Chances extends Component {
 
   render() {
     const { places, colors } = this.state;
-    console.log(places[0].track_id)
-    const density = [colors[0], colors[1], colors[2], colors[3], colors[0]]
-    console.log(density[places[0].track_id])
+    const density = [colors[0], colors[1], colors[2], colors[3], colors[0]];
+    const marks = {
+      0: 'Today',
+      50: 'Tomorrow',
+      100: '19.11.2019',
+    };    
     return (
       <div className={styles.wrapper}>
+        <div style={{width: "85%", paddingLeft: "9%"}}>
+          <Slider marks={marks} included={false} defaultValue={0} step={50} tipFormatter={null} />
+        </div>
         <GoogleMap
           bootstrapURLKeys={{
             key: 'AIzaSyDW3sblDQVKWqO9j1gRR7yPEztqOt355W4'
@@ -46,6 +54,7 @@ class Chances extends Component {
             />
           ))}
         </GoogleMap>
+        <div className={styles.legenda} ><img style={{width: "90px"}} src={legend}/></div>
       </div>
     );
   }

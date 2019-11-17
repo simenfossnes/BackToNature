@@ -3,3 +3,10 @@
     width: calc(100vw - 1px);
     height:  100vh;
 }
+
+.legenda {
+    position: fixed;
+    bottom: 50px;
+    left: 6px;
+    width: 90px;
+}
