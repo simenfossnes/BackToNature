@@ -23,12 +23,7 @@ class Chances extends Component {
 
   render() {
     const { places, colors } = this.state;
-    const { daysAhead, updateDaysAhead } = this.props;
-    const marks = {
-      0: 'Today',
-      50: 'Tomorrow',
-      100: '19.11.2019',
-    };   
+    const { daysAhead, updateDaysAhead } = this.props; 
 
     return (
       <div className={styles.wrapper}>
