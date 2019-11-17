@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import dot_red from "../../images/dot-07.png";
+import Dot from "../../images/Dot.jsx";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -23,7 +23,7 @@ const Marker = props => (
     alt={props.text}
     {...props.onClick ? { onClick: props.onClick } : {}}
   >
-    <img src={dot_red} width="18px" height="18px" alt="Couldn't load." />
+    <Dot color={props.color} />
   </Wrapper>
 );
 
@@ -34,6 +34,7 @@ Marker.defaultProps = {
 Marker.propTypes = {
   onClick: PropTypes.func,
   text: PropTypes.string.isRequired,
+  color: PropTypes.string
 };
 
 export default Marker;

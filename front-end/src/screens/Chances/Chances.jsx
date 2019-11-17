@@ -11,7 +11,8 @@ class Chances extends Component {
     super(props);
 
     this.state = {
-      places: places_data.data
+      places: places_data.data,
+      colors: ["#1c3010", "#34591e", "#4f842d", "#62b239"]
     }
   }
 
@@ -22,7 +23,10 @@ class Chances extends Component {
   }
 
   render() {
-    const { places } = this.state;
+    const { places, colors } = this.state;
+    console.log(places[0].track_id)
+    const density = [colors[0], colors[1], colors[2], colors[3], colors[0]]
+    console.log(density[places[0].track_id])
     return (
       <div className={styles.wrapper}>
         <GoogleMap
@@ -38,6 +42,7 @@ class Chances extends Component {
               text={place.name}
               lat={place.lat}
               lng={place.lng}
+              color={density[place.track_id]}
             />
           ))}
         </GoogleMap>
@@ -52,8 +57,8 @@ Chances.propTypes = {
 };
 
 Chances.defaultProps = {
-  center: [60.335448, 24.497748],
-  zoom: 14.5,
+  center: [60.309555, 24.522341],
+  zoom: 13,
 };
 
 export default Chances;
