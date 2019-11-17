@@ -1,12 +1,20 @@
 /* your css code */
 .wrapper {
     width: calc(100vw - 1px);
-    height:  100vh;
+    height: 100vh;
 }
 
-.legenda {
+.sliderWrapper {
+    position: absolute;
+    bottom: 45px;
+    width: 100vw;
+    padding: 8px 24px;
+}
+
+.legend {
     position: fixed;
-    bottom: 50px;
-    left: 6px;
+    top: 20px;
+    right: 20px;
     width: 90px;
+    z-index: 10;
 }

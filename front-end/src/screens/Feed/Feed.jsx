@@ -1,11 +1,11 @@
-import React from "react";
+import React, { isValidElement } from "react";
 import { connect } from "react-redux";
 // import PropTypes from 'prop-types';
-//import { Test } from './Feed.styles';
+import styles from './Feed.module.css';
 import { store } from "../../App";
 import { fetchTweetsStart } from "../../state/actions/twitterActions";
 import isEmpty from "lodash.isempty";
-
+import { List, Avatar } from 'antd';
 class Feed extends React.Component {
 
   componentDidMount() {
@@ -15,11 +15,24 @@ class Feed extends React.Component {
   render() {
     const { loading, tweets } = this.props;
     return (
-      <div className="FeedWrapper">
+      <div className={styles.wrapper}>
         <h1>Feed</h1>
-        {loading && "loading..."}
+        
         {!(isEmpty(tweets) && !loading) && (
-          <TweetList tweets={tweets.statuses} />
+          <List
+            dataSource={tweets.statuses}
+            renderItem={item => (
+              <List.Item key={item.id}>
+                <List.Item.Meta
+                  avatar={<Avatar src={item.user.profile_image_url} />}
+                  title={<a href="https://ant.design">{item.user.name}</a>}
+                  description={item.text}
+                />
+                {item.entities.hasOwnProperty('media') && <img className={styles.image} src={item.entities.media[0].media_url}/>}
+              </List.Item>
+            )}
+          />
+
         )}
       </div>
     );

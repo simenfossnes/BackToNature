@@ -1,1 +1,10 @@
 /* your css code */
+.wrapper {
+    padding: 24px;
+}
+
+.image {
+    width: 100%;
+    margin-top: 12px;
+    border-radius: 24px;
+}

@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './Chances.module.css';
 import Marker from '../../components/Marker';
 import GoogleMap from '../../components/GoogleMap';
-import {connect} from "react-redux";
-import { Slider, Switch } from 'antd';
-
+import { Slider, Typography } from 'antd';
 import * as places_data from '../../data/places.js';
 import Legend from '../../images/Legend.jsx';
-import { predictionSaga } from '../../state/sagas/sagas';
+import { updateDaysAhead } from '../../state/actions/timePeriodActions';
+
+const { Text } = Typography;
 
 class Chances extends Component {
   constructor(props) {
@@ -21,17 +23,11 @@ class Chances extends Component {
 
   render() {
     const { places, colors } = this.state;
-    const marks = {
-      0: 'Today',
-      50: 'Tomorrow',
-      100: '19.11.2019',
-    };   
+    const { daysAhead, updateDaysAhead } = this.props; 
 
     return (
       <div className={styles.wrapper}>
-        <div style={{width: "85%", paddingLeft: "9%"}}>
-          <Slider marks={marks} included={false} defaultValue={0} step={50} tipFormatter={null} />
-        </div>
+        <div className={styles.legend} ><Legend /></div>
         <GoogleMap
           bootstrapURLKeys={{
             key: 'AIzaSyDW3sblDQVKWqO9j1gRR7yPEztqOt355W4'
@@ -49,7 +45,10 @@ class Chances extends Component {
             />
           ))}
         </GoogleMap>
-        <div className={styles.legenda} ><Legend /></div>
+        <div className={styles.sliderWrapper}>
+          <Text>Predicting {daysAhead} days ahead</Text>
+          <Slider onChange={updateDaysAhead} handleStyle={{width: '24px', height: '24px', marginTop: '-12px'}} min={0} max={5} defaultValue={0} step={1} />
+        </div>
       </div>
     );
   }
@@ -66,9 +65,14 @@ Chances.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
-  data: state.predictions.peopleTraffic.data
+  data: state.predictions.peopleTraffic.data,
+  daysAhead: state.timePeriod.daysAhead
 })
 
-const mapDispatchToProps = undefined;
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    updateDaysAhead
+  }, dispatch)
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chances);
