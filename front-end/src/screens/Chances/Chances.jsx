@@ -6,13 +6,12 @@ import styles from './Chances.module.css';
 import Marker from '../../components/Marker/Marker';
 import Marker2 from '../../components/Marker/Marker_chance';
 import GoogleMap from '../../components/GoogleMap';
-import { Slider, Typography } from 'antd';
+import { Slider } from 'antd';
 import * as places_data from '../../data/places.js';
 import * as chances from '../../data/chances.js';
 import Legend from '../../images/Legend.jsx';
 import { updateDaysAhead } from '../../state/actions/timePeriodActions';
-
-const { Text } = Typography;
+import Loader from '../../components/Loader';
 
 class Chances extends Component {
   constructor(props) {
@@ -42,11 +41,16 @@ class Chances extends Component {
 
   render() {
     const { places, colors, chance } = this.state;
-    const { daysAhead, updateDaysAhead } = this.props; 
+    const { loading, daysAhead, updateDaysAhead } = this.props; 
+
+    const data = this.props.data ? this.props.data[daysAhead] : null;
+
+    console.log('loading: ', this.props.loading);
 
     return (
       <div className={styles.wrapper}>
-        <div className={styles.legend} ><Legend /></div>
+        { loading && <Loader/> }
+        <div className={styles.legend} ><Legend width={64}/></div>
         <GoogleMap
           bootstrapURLKeys={{
             key: 'AIzaSyDW3sblDQVKWqO9j1gRR7yPEztqOt355W4'
@@ -60,7 +64,7 @@ class Chances extends Component {
               text={place.name}
               lat={place.lat}
               lng={place.lng}
-              color={this.props.data != null ? colors[this.props.data[place.track_id]] : colors[0]}
+              color={data != null ? colors[data[place.track_id]] : colors[0]}
             />
           ))}
           {chance.map((ch, i) => (
@@ -73,7 +77,6 @@ class Chances extends Component {
           ))}
         </GoogleMap>
         <div className={styles.sliderWrapper}>
-          <Text>Predicting {daysAhead} days ahead</Text>
           <Slider onChange={updateDaysAhead} handleStyle={{width: '24px', height: '24px', marginTop: '-12px'}} min={0} max={5} defaultValue={0} step={1} />
         </div>
       </div>
@@ -93,7 +96,8 @@ Chances.defaultProps = {
 
 const mapStateToProps = (state) => ({
   data: state.predictions.peopleTraffic.data,
-  daysAhead: state.timePeriod.daysAhead
+  daysAhead: state.timePeriod.daysAhead,
+  loading: state.predictions.peopleTraffic.fetching
 })
 
 const mapDispatchToProps = dispatch => (

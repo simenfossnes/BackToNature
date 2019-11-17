@@ -6,6 +6,9 @@ import { store } from "../../App";
 import { fetchTweetsStart } from "../../state/actions/twitterActions";
 import isEmpty from "lodash.isempty";
 import { List, Avatar } from 'antd';
+import Loader from '../../components/Loader';
+
+
 class Feed extends React.Component {
 
   componentDidMount() {
@@ -16,9 +19,12 @@ class Feed extends React.Component {
     const { loading, tweets } = this.props;
     return (
       <div className={styles.wrapper}>
+
+        { loading && <Loader/> }
+
         <h1>Feed</h1>
         
-        {!(isEmpty(tweets) && !loading) && (
+        {!(isEmpty(tweets)) && (
           <List
             dataSource={tweets.statuses}
             renderItem={item => (
@@ -57,7 +63,7 @@ Feed.defaultProps = {
 
 const mapStateToProps = (state) => {
   return {
-    loading: state.twitter.tweets.loading,
+    loading: state.twitter.tweets.fetching,
     tweets: state.twitter.tweets.data
   };
 };
