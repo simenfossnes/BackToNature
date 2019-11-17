@@ -19,31 +19,37 @@ class Chances extends Component {
     this.state = {
       places: places_data.data,
       colors: ["#1c3010", "#34591e", "#4f842d", "#62b239"],
-      chance: [],
+      chance: this.generateChance(),
       keys: []
     }
   }
 
-  componentDidMount() {
+  generateChance = () => {
     var i = 0;
-    while (i < 5) {
-      var num = Math.floor((Math.random() * 8) + 1);
-      var loc = Math.floor((Math.random() * 2));
-      var key = Math.floor((Math.random() * 1000));
-      this.state.chance.push([num, loc]);
-      this.state.keys.push(key);
-      i ++;
+    let days = [];
+    for (let j = 0; j < 6; j++) {
+      let day = [];
+      for (let i = 0; i < 5; i++) {
+        var num = Math.floor((Math.random() * 8) + 1);
+        var loc = Math.floor((Math.random() * 2));
+        var key = Math.floor((Math.random() * 1000));
+        day.push([num, loc]);
+      }
+      days.push(day);
     }
-    console.log(this.state.chance);
+    return days;
   }
 
 
 
   render() {
-    const { places, colors, chance } = this.state;
+    const { places, colors } = this.state;
     const { loading, daysAhead, updateDaysAhead } = this.props; 
 
     const data = this.props.data ? this.props.data[daysAhead] : null;
+    const chance = this.state.chance[daysAhead];
+
+    console.log('state chance: ', chance);
 
     console.log('loading: ', this.props.loading);
 
@@ -69,7 +75,7 @@ class Chances extends Component {
           ))}
           {chance.map((ch, i) => (
             <Marker2
-            key={this.state.keys[i]}
+            key={'marker'+i}
             lat={chances.chances[ch[0]].locations[ch[1]].lat}
             lng={chances.chances[ch[0]].locations[ch[1]].lng}
             icon={chances.chances[ch[0]].id}
@@ -77,7 +83,7 @@ class Chances extends Component {
           ))}
         </GoogleMap>
         <div className={styles.sliderWrapper}>
-          <Slider onChange={updateDaysAhead} handleStyle={{width: '24px', height: '24px', marginTop: '-12px'}} min={0} max={5} defaultValue={0} step={1} />
+          <Slider onChange={updateDaysAhead} handleStyle={{width: '24px', height: '24px', marginTop: '-12px'}} min={1} max={5} defaultValue={0} step={1} />
         </div>
       </div>
     );
