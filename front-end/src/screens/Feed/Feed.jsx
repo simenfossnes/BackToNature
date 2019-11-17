@@ -10,26 +10,17 @@ class Feed extends React.Component {
     content: []
   };
 
-  constructor(props) {
-    super(props);
-  }
-
-  peopleTrafficCallback = (data) => {
-    console.log(data);
-  }
-
   async componentDidMount() {
     console.log('anything happened?');
     // call the api
     const data = await getTweets();
     const data2 = await getPeopleTrafficPredictions();
     console.log(data);
-    console.log(data2)
+    console.log(data2);
     // getPeopleTrafficPredictions(this.peopleTrafficCallback);
   }
 
   render() {
-    const { loaded } = this.state;
     return (
       <div className="FeedWrapper">
         <h1>Feed</h1>
