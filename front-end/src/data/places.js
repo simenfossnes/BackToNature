@@ -644,19 +644,5 @@ export const data = [{
             name: "Point",
             lat: 60.303420, 
             lng: 24.501324
-          },
-          {
-            id: 96, 
-            track_id: 5,
-            name: "Point",
-            lat: 60.312064, 
-            lng: 24.461260
-          },
-          {
-            id: 97, 
-            track_id: 5,
-            name: "Point",
-            lat: 60.313535, 
-            lng: 24.461004
-          }    
+          }
    ]

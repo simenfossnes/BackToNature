@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import styles from './Chances.module.css';
 import Marker from '../../components/Marker';
 import GoogleMap from '../../components/GoogleMap';
+import {connect} from "react-redux";
 import { Slider, Switch } from 'antd';
 
 import * as places_data from '../../data/places.js';
-import legend from '../../images/legend-07.png';
+import Legend from '../../images/Legend.jsx';
+import { predictionSaga } from '../../state/sagas/sagas';
 
 class Chances extends Component {
   constructor(props) {
@@ -18,20 +20,14 @@ class Chances extends Component {
     }
   }
 
-  componentDidMount() {
-    fetch('places.json')
-      .then(response => response.json())
-      .then(data => this.setState({ places: data.results }));
-  }
-
   render() {
     const { places, colors } = this.state;
-    const density = [colors[0], colors[1], colors[2], colors[3], colors[0]];
     const marks = {
       0: 'Today',
       50: 'Tomorrow',
       100: '19.11.2019',
-    };    
+    };   
+
     return (
       <div className={styles.wrapper}>
         <div style={{width: "85%", paddingLeft: "9%"}}>
@@ -50,11 +46,11 @@ class Chances extends Component {
               text={place.name}
               lat={place.lat}
               lng={place.lng}
-              color={density[place.track_id]}
+              color={this.props.data != null ? colors[this.props.data[0]] : colors[0]}
             />
           ))}
         </GoogleMap>
-        <div className={styles.legenda} ><img style={{width: "90px"}} src={legend}/></div>
+        <div className={styles.legenda} ><Legend /></div>
       </div>
     );
   }
@@ -70,4 +66,10 @@ Chances.defaultProps = {
   zoom: 13,
 };
 
-export default Chances;
+const mapStateToProps = (state) => ({
+  data: state.predictions.peopleTraffic.data
+})
+
+const mapDispatchToProps = undefined;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chances);
