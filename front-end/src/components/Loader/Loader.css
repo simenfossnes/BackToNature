@@ -17,7 +17,7 @@
   width: 100%;
 }
 .containAll .containLoader .circle-1 {
-  border: 7px solid #00ff99;
+  border: 7px solid #43b549;
   border-radius: 50%;
   box-sizing: border-box;
   border-right: 7px solid transparent;
@@ -29,7 +29,7 @@
   animation-delay: 30ms;
 }
 .containAll .containLoader .circle-2 {
-  border: 7px solid #00ff99;
+  border: 7px solid #43b549;
   border-radius: 50%;
   box-sizing: border-box;
   border-right: 7px solid transparent;
@@ -41,7 +41,7 @@
   animation-delay: 60ms;
 }
 .containAll .containLoader .circle-3 {
-  border: 7px solid #00ff99;
+  border: 7px solid #43b549;
   border-radius: 50%;
   box-sizing: border-box;
   border-right: 7px solid transparent;
@@ -53,7 +53,7 @@
   animation-delay: 90ms;
 }
 .containAll .containLoader .circle-4 {
-  border: 7px solid #00ff99;
+  border: 7px solid #43b549;
   border-radius: 50%;
   box-sizing: border-box;
   border-right: 7px solid transparent;
@@ -65,7 +65,7 @@
   animation-delay: 120ms;
 }
 .containAll .containLoader .circle-5 {
-  border: 7px solid #00ff99;
+  border: 7px solid #43b549;
   border-radius: 50%;
   box-sizing: border-box;
   border-right: 7px solid transparent;
@@ -77,7 +77,7 @@
   animation-delay: 150ms;
 }
 .containAll .containLoader .circle-6 {
-  border: 7px solid #00ff99;
+  border: 7px solid #43b549;
   border-radius: 50%;
   box-sizing: border-box;
   border-right: 7px solid transparent;
@@ -89,7 +89,7 @@
   animation-delay: 180ms;
 }
 .containAll .containLoader .circle-7 {
-  border: 7px solid #00ff99;
+  border: 7px solid #43b549;
   border-radius: 50%;
   box-sizing: border-box;
   border-right: 7px solid transparent;
@@ -101,7 +101,7 @@
   animation-delay: 210ms;
 }
 .containAll .containLoader .circle-8 {
-  border: 7px solid #00ff99;
+  border: 7px solid #43b549;
   border-radius: 50%;
   box-sizing: border-box;
   border-right: 7px solid transparent;
@@ -115,7 +115,7 @@
 
 @-webkit-keyframes rotate {
   50% {
-    border: 1px solid #00ff99;
+    border: 1px solid #43b549;
     border-right: 1px solid transparent;
     border-bottom: 1px solid transparent;
     border-left: 1px solid transparent;
@@ -128,7 +128,7 @@
 
 @keyframes rotate {
   50% {
-    border: 1px solid #00ff99;
+    border: 1px solid #43b549;
     border-right: 1px solid transparent;
     border-bottom: 1px solid transparent;
     border-left: 1px solid transparent;
