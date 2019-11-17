@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './Chances.module.css';
 import Marker from '../../components/Marker';
 import GoogleMap from '../../components/GoogleMap';
-import { Slider, Switch } from 'antd';
+import { Slider } from 'antd';
 
 import * as places_data from '../../data/places.js';
 import legend from '../../images/legend-07.png';
@@ -11,7 +11,6 @@ import legend from '../../images/legend-07.png';
 class Chances extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       places: places_data.data,
       colors: ["#1c3010", "#34591e", "#4f842d", "#62b239"]
