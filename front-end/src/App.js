@@ -7,9 +7,11 @@ import Onboarding from "./components/Onboarding/Onboarding";
 import { fetchPeopleTrafficPredictionsStart } from './state/actions/predictionActions';
 import { fetchTweetsStart } from './state/actions/twitterActions';
 
-const store = configureStore();
+export const store = configureStore();
 
+// get predictions
 store.dispatch(fetchPeopleTrafficPredictionsStart());
+// get tweets
 store.dispatch(fetchTweetsStart());
 
 const App = props => {
