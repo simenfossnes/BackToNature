@@ -27,7 +27,7 @@ class Chances extends Component {
 
     return (
       <div className={styles.wrapper}>
-        <div className={styles.legend} ><Legend /></div>
+        <div className={styles.legend} ><Legend width={64}/></div>
         <GoogleMap
           bootstrapURLKeys={{
             key: 'AIzaSyDW3sblDQVKWqO9j1gRR7yPEztqOt355W4'
@@ -46,7 +46,6 @@ class Chances extends Component {
           ))}
         </GoogleMap>
         <div className={styles.sliderWrapper}>
-          <Text>Predicting {daysAhead} days ahead</Text>
           <Slider onChange={updateDaysAhead} handleStyle={{width: '24px', height: '24px', marginTop: '-12px'}} min={0} max={5} defaultValue={0} step={1} />
         </div>
       </div>
